@@ -12,14 +12,32 @@
     <div class="right_searchgem_wrapper">
         <h1 class="search_title">search gems</h1>
 
-        <form id="search_gems">
+        <form id="search_gems" onsubmit="searchGem()">
             <div class="search_wrapper">
-                <input class="search_input" type="text" name="" value="" placeholder="search">
-                <span class="magnifying_glass"></span>
+                <input class="search_input" id="search_input" type="text" name="search_this" value="" placeholder="search">
+                <input class="magnifying_glass" type="submit" name="" value=""></input>
             </div>
         </form>
         <div class="search_result" id="whaa">
-            <p>textarea</p>
+            <% if @title_info %>
+                <div class="render_results">
+                    <a href="<%=@title_info['url']%>"> <%= @title_info['name'] %></a>
+                </div>
+            <% end %>
+            <% if @gem_detilas %>
+                <div class="render_results">
+                    <h5> information </h5>
+                    <p> <%= @gem_detilas['information'] %></p>
+                </div>
+            <% end %>
+            <% if @dependencies %>
+                <div class="render_results">
+                    <h5> dependencies </h5>
+                    <% @dependencies.each do |object| %>
+                        <a href="<%=object['url']%>"> <%= object['name'] %></a>
+                    <% end %>
+                </div>
+            <% end %>
         </div>
     </div>
 </div>
