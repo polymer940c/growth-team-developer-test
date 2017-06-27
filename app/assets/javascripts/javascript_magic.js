@@ -20,6 +20,7 @@ $( document ).ready(function() {
         }
     )
 });
+// $('.body_wrapper').height($(window).height()/2);
 function checkIfGemInFav() {
     $('.title_and_star_row').each(function(index) {
         var element = $(this).find('i')[0]

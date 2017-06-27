@@ -6,7 +6,6 @@
         flex: 1;
         background: url(/assets/map.png) no-repeat center;
         background-size: 100% 100%;
-        // padding-right: 30px;
         width: 350px;
         .logo {
             height: 10%;
@@ -123,5 +122,41 @@
 }
 .active {
     background-color: rgba(255, 255, 255, 0.5);
+}
+
+@media (max-width: 680px) {
+
+        .body_wrapper {
+            flex-direction: column;
+            .left_warpper {
+                width: 100%;
+                background-size: 100%;
+                .nav {
+                    flex-direction: row;
+                    align-items: none;
+                    padding-bottom: 0;
+                    text-align: center;
+                }
+            }
+            .right_wrapper {
+                padding:0;
+                text-align: center;
+                .result_wrapper {
+                    .search_wrapper{
+                        .search_input {
+                            width: 100%;
+                        }
+                    }
+                    .render_results {
+                        margin: 0;
+                        .title_and_star_column {
+                            .title_and_star_row {
+                                margin: 0 auto;
+                            }
+                        }
+                    }
+                }
+            }
+        }
 
 }
