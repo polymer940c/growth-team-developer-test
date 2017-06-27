@@ -1,5 +1,5 @@
 ### Demo  
-![alt text](https://github.com/polymer940c/growth-team-developer-test/edit/master/assignment.gif "Demo")  
+![alt text](https://github.com/polymer940c/growth-team-developer-test/blob/master/assigment.gif "Demo")  
 
 # Teachable Growth Team Developer Test
 
