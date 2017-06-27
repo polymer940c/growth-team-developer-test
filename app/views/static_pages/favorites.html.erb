@@ -1,1 +1,19 @@
-Please build the favorites page here.
+<div class="body_wrapper">
+    <%= render "partials/nav" %>
+    <div class="right_wrapper" id='test'> 
+        <% if @favorites %>
+            <p>this things </p>
+            <div class="render_results">
+                <div class="title_and_star_column">
+                    <% @favorites.each do |gem| %>
+                    <div class="title_and_star_row">
+                        <a href="<%=gem['url']%>" target="_blank"> <%= gem['name'] %></a>
+                        <i class="star_icon"></i>
+                    </div>
+                    <% end %>
+                </div>
+            </div>
+        <% end %>
+
+    </div>
+</div>

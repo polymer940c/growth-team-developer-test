@@ -1,0 +1,17 @@
+<div class="right_wrapper" id='favorites_render'>
+    <h1 class="right_title">Your Favorite Gems</h1>
+    <div class="result_wrapper">
+    <% if @favorites %>
+        <div class="render_results">
+            <div class="title_and_star_column">
+                <% @favorites.each do |gem| %>
+                <div class="title_and_star_row">
+                    <i class="star_icon"></i>
+                    <a href="<%=gem['url']%>" target="_blank"> <%= gem['name'] %></a>
+                </div>
+                <% end %>
+            </div>
+        </div>
+    <% end %>
+    </div>
+</div>

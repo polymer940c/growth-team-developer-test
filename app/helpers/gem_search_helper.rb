@@ -1,7 +1,14 @@
 module GemSearchHelper
 
     def self.search(gem)
-        Gems.info gem
+        begin
+            Gems.info gem
+        rescue
+            show = {'search' => "no result",
+                    'name' => gem,
+                    'message' => "Oh no! Looks like that gem can’t be found."
+                }
+        end
     end
 
     def self.title_info(result)
@@ -23,8 +30,17 @@ module GemSearchHelper
         show.each do |dependent|
             dependent['url'] = 'https://rubygems.org/gems/' + dependent['name']
         end
-
         show
+    end
+
+    def self.append_url(array)
+        show = []
+        array.each do |gem_name|
+            url = 'https://rubygems.org/gems/' + gem_name
+            gem = {'name'=> gem_name, 'url'=> url }
+            show.push(gem)
+        end
+        show 
     end
 
 end

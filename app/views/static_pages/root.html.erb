@@ -1,40 +1,53 @@
 
 <div class="body_wrapper">
-    <div class="left_searchgem_warpper">
-        <div class="logo">
-            <h3>teachable</h3>
-        </div>
-        <div class="options">
-            <p>hello</p>
-            <p>hello2</p>
-        </div>
-    </div>
-    <div class="right_searchgem_wrapper">
-        <h1 class="search_title">search gems</h1>
+    <%= render "partials/nav" %>
+    <div class="right_wrapper" id="search_render">
+        <h1 class="right_title">search gems</h1>
 
-        <form id="search_gems" onsubmit="searchGem()">
-            <div class="search_wrapper">
-                <input class="search_input" id="search_input" type="text" name="search_this" value="" placeholder="search">
-                <input class="magnifying_glass" type="submit" name="" value=""></input>
-            </div>
-        </form>
-        <div class="search_result" id="whaa">
+        <div class="result_wrapper">
+            <form id="search_gems" onsubmit="searchGem()">
+                <div class="search_wrapper">
+                    <input class="search_input" id="search_input" type="text" name="search_this" value="" placeholder="search">
+                    <input class="magnifying_glass_icon" id='magnifying_glass_icon' type="submit" name="" value=""></input>
+                </div>
+            </form>
+            <% if @no_match %>
+                <div id="render_no_match" data-url="<%= @no_match.to_json %>">
+
+                    <p><%=@no_match['message']%></p>
+                </div>
+            <% end %>
             <% if @title_info %>
                 <div class="render_results">
-                    <a href="<%=@title_info['url']%>"> <%= @title_info['name'] %></a>
+                    <div class="title_and_star_column">
+                        <div class="title_and_star_row">
+                            <a href="<%=@title_info['url']%>" target="_blank"> <%= @title_info['name'] %></a>
+                            <i class="star_icon"></i>
+                        </div>
+                    </div>
                 </div>
             <% end %>
             <% if @gem_detilas %>
                 <div class="render_results">
-                    <h5> information </h5>
-                    <p> <%= @gem_detilas['information'] %></p>
+                    <h5 class="render_title"> information </h5>
+                    <p class="render_text"> <%= @gem_detilas['information'] %>.</p>
                 </div>
             <% end %>
             <% if @dependencies %>
                 <div class="render_results">
-                    <h5> dependencies </h5>
-                    <% @dependencies.each do |object| %>
-                        <a href="<%=object['url']%>"> <%= object['name'] %></a>
+                    <h5 class="render_title"> dependencies </h5>
+                    <% if @dependencies.empty? %>
+                        <p>None</p>
+                    <% else %>
+                        <div class="title_and_star_column">
+
+                        <% @dependencies.each do |object| %>
+                        <div class="title_and_star_row">
+                            <a href="<%=object['url']%>" target="_blank"><%=object['name']%></a>
+                            <i class="star_icon" onclick="addToFavorite(this)" ></i>
+                        </div>
+                        <% end %>
+                        </div>
                     <% end %>
                 </div>
             <% end %>
